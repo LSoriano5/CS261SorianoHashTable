@@ -23,19 +23,19 @@ class TestHashTable(unittest.TestCase):
         except NameError:
             self.fail("Could not instantiate HashTable.")
 
-#     def test_size(self):
-#         """
-#         Test 2: A default HashTable has a size attribute that is 100.
-#         """
-#         h = HashTable()
-#         self.assertEqual(100, h.capacity)
+    def test_size(self):
+        """
+        Test 2: A default HashTable has a size attribute that is 100.
+        """
+        h = HashTable()
+        self.assertEqual(100, h.capacity)
 
-#     def test_instantiation_with_size(self):
-#         """
-#         Test 3: A HashTable can be instantiated with an optional size.
-#         """
-#         h = HashTable(25)
-#         self.assertEqual(25, h.capacity)
+    def test_instantiation_with_size(self):
+        """
+        Test 3: A HashTable can be instantiated with an optional size.
+        """
+        h = HashTable(25)
+        self.assertEqual(25, h.capacity)
 
 #     # """
 #     # Basic API
