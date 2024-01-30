@@ -83,47 +83,47 @@ class TestHashTable(unittest.TestCase):
 #     # Data Storage
 #     # """
 
-#     def test_data(self):
-#         """
-#         Test 7: A HashTable has an internal array for storing k-v pairs.
-#         """
-#         h = HashTable(50)
-#         self.assertEqual(list, type(h.values))
+    def test_data(self):
+        """
+        Test 7: A HashTable has an internal array for storing k-v pairs.
+        """
+        h = HashTable(50)
+        self.assertEqual(list, type(h.values))
 
-#     def test_data_contents(self):
-#         """
-#         Test 8: A HashTable data array contains empty lists.
-#         We need lists at each location in the array to store multiple 
-#         key-value pairs in the event of collisions
-#         """
-#         h = HashTable(5)
-#         expected = [ [], [], [], [], [] ]
-#         self.assertEqual(expected, h.values)
+    def test_data_contents(self):
+        """
+        Test 8: A HashTable data array contains empty lists.
+        We need lists at each location in the array to store multiple 
+        key-value pairs in the event of collisions
+        """
+        h = HashTable(5)
+        expected = [ [], [], [], [], [] ]
+        self.assertEqual(expected, h.values)
 
 #     # """
 #     # Insertion Basics
 #     # """
 
-#     def test_insert_one(self):
-#         """
-#         Test 9: Inserting a k-v pair stores it as a two-element array in the list at
-#         the right index.
-#         """
-#         h = HashTable(5)
-#         h[11] = 'eggs' # 11 is the key, not an index :)
-#         self.assertEqual([[11, 'eggs']], h.values[4])
+    def test_insert_one(self):
+        """
+        Test 9: Inserting a k-v pair stores it as a two-element array in the list at
+        the right index.
+        """
+        h = HashTable(5)
+        h[11] = 'eggs' # 11 is the key, not an index :)
+        self.assertEqual([[11, 'eggs']], h.values[4])
 
 #     # """
 #     # Retrieval Basics
 #     # """
 
-#     def test_retrieve_one(self):
-#         """
-#         Test 10: The value of an inserted k-v pair is retrievable.
-#         """
-#         h = HashTable(5)
-#         h['spam'] = 'eggs'
-#         self.assertEqual('eggs', h['spam'])
+    def test_retrieve_one(self):
+        """
+        Test 10: The value of an inserted k-v pair is retrievable.
+        """
+        h = HashTable(5)
+        h['spam'] = 'eggs'
+        self.assertEqual('eggs', h['spam'])
 
 #     # """
 #     # Insertion
