@@ -41,43 +41,43 @@ class TestHashTable(unittest.TestCase):
 #     # Basic API
 #     # """
 #     # Hint: Do the naive thing. You do NOT need data storage to pass this test.
-#     def test_simple_insertion(self):
-#         """
-#         Test 4: Insert a single key-value pair into to hash table
-#         """
-#         h = HashTable()
-#         try:
-#             h['spam'] = 'eggs'
-#         except TypeError:
-#             self.fail("HashTable has no __setitem__ implementation")
+    def test_simple_insertion(self):
+        """
+        Test 4: Insert a single key-value pair into to hash table
+        """
+        h = HashTable()
+        try:
+            h['spam'] = 'eggs'
+        except TypeError:
+            self.fail("HashTable has no __setitem__ implementation")
 
 #     #Hint: Do the naive thing. You do NOT need data storage to pass this test.
-#     def test_simple_retrieval(self):
-#         """
-#         Test 5: Retrive a value from the hash table. If key not present, raise KeyError
-#         """
-#         h = HashTable()
-#         try:
-#             _ = h['spam']
-#             self.fail("Did not raise KeyError: Missing key.")
-#         except KeyError:
-#             pass
+    def test_simple_retrieval(self):
+        """
+        Test 5: Retrive a value from the hash table. If key not present, raise KeyError
+        """
+        h = HashTable()
+        try:
+            _ = h['spam']
+            self.fail("Did not raise KeyError: Missing key.")
+        except KeyError:
+            pass
    
-#     def test_hash(self):
-#         """
-#         Test 6: Hash function uses the Knuth Variant on Division to distribute
-#         key-value pairs in the hash table. 
-#         Knuth Variant on Division : h(k) = k(k+3) mod m
-#         where k is the key and m is the number of "slots or buckets" in the hash table
+    def test_hash(self):
+        """
+        Test 6: Hash function uses the Knuth Variant on Division to distribute
+        key-value pairs in the hash table. 
+        Knuth Variant on Division : h(k) = k(k+3) mod m
+        where k is the key and m is the number of "slots or buckets" in the hash table
 
-#         returns hash no greater than its size - 1.
-#         """
-#         h = HashTable(25)
-#         self.assertEqual(0, h.hash(0))
-#         self.assertEqual(5, h.hash(10))
-#         self.assertEqual(20, h.hash(15))
-#         self.assertEqual(10, h.hash(27))
-#         self.assertEqual(hash("fake key")*(hash("fake key")+3) % 25, h.hash("fake key"))
+        returns hash no greater than its size - 1.
+        """
+        h = HashTable(25)
+        self.assertEqual(0, h.hash(0))
+        self.assertEqual(5, h.hash(10))
+        self.assertEqual(20, h.hash(15))
+        self.assertEqual(10, h.hash(27))
+        self.assertEqual(hash("fake key")*(hash("fake key")+3) % 25, h.hash("fake key"))
 
 #     # """
 #     # Data Storage
