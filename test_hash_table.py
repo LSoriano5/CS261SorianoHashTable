@@ -199,96 +199,96 @@ class TestHashTable(unittest.TestCase):
 #     # Misc. Methods
 #     # """
 
-#     def test_clear(self):
-#         """
-#         Test 17:A cleared HashTable has an empty data array.
-#         """
-#         h = HashTable(5)
-#         h['spam'] = 'eggs'
-#         h['needle'] = 'haystack'
-#         h['osu'] = 'beavers'
-#         h.clear()
-#         self.assertEqual([[], [], [], [], []], h.values)
+    def test_clear(self):
+        """
+        Test 17:A cleared HashTable has an empty data array.
+        """
+        h = HashTable(5)
+        h['spam'] = 'eggs'
+        h['needle'] = 'haystack'
+        h['osu'] = 'beavers'
+        h.clear()
+        self.assertEqual([[], [], [], [], []], h.values)
 
-#     def test_initial_keys(self):
-#         """
-#         Test 18: A HashTable initially has no keys.
-#         """
-#         h = HashTable()
-#         self.assertEqual([], h.keys())
+    def test_initial_keys(self):
+        """
+        Test 18: A HashTable initially has no keys.
+        """
+        h = HashTable()
+        self.assertEqual([], h.keys())
 
-#     def test_keys(self):
-#         """
-#         Test 19: A HashTable can produce a list of its keys.
-#         """
-#         h = HashTable()
-#         h['spam'] = 'eggs'
-#         h['osu'] = 'beavers'
-#         h['needle'] = 'haystack'
-#         keys = h.keys()
-#         keys.sort()
-#         self.assertEqual(['needle', 'osu', 'spam'], keys)
+    def test_keys(self):
+        """
+        Test 19: A HashTable can produce a list of its keys.
+        """
+        h = HashTable()
+        h['spam'] = 'eggs'
+        h['osu'] = 'beavers'
+        h['needle'] = 'haystack'
+        keys = h.keys()
+        keys.sort()
+        self.assertEqual(['needle', 'osu', 'spam'], keys)
 
-#     def test_initial_values(self):
-#         """
-#         Test 20: A HashTable initially has no values.
-#         """
-#         h = HashTable(5)
-#         self.assertEqual([], h.vals())
+    def test_initial_values(self):
+        """
+        Test 20: A HashTable initially has no values.
+        """
+        h = HashTable(5)
+        self.assertEqual([], h.vals())
 
-#     def test_values(self):
-#         """
-#         Test 21: A HashTable can produce a list of its values.
-#         """
-#         h = HashTable()
-#         h['spam'] = 'eggs'
-#         h['osu'] = 'beavers'
-#         h['needle'] = 'haystack'
-#         values = h.vals()
-#         values.sort()
-#         self.assertEqual(['beavers', 'eggs', 'haystack'], values)
+    def test_values(self):
+        """
+        Test 21: A HashTable can produce a list of its values.
+        """
+        h = HashTable()
+        h['spam'] = 'eggs'
+        h['osu'] = 'beavers'
+        h['needle'] = 'haystack'
+        values = h.vals()
+        values.sort()
+        self.assertEqual(['beavers', 'eggs', 'haystack'], values)
 
 #     # """
 #     # Time complexity
 #     # """
 
-#     def test_retrieval_is_constant_time(self):
-#         """
-#         Test 22: Retrieving a value from a dictionary should take the same amount of time
-#         no matter how many k-v pairs it contains. It should be O(... what?)
-#         """
-#         time_samples = []
-#         key = fake_key()
-#         value = fake_value()
-#         small_table = HashTable()
-#         small_table[key] = value
-#         large_table = HashTable(20000)
-#         for _ in range(10000):
-#             large_table[fake_key()] = fake_value()
-#         large_table[key] = value
-#         for _ in range(9999):
-#             large_table[fake_key()] = fake_value()
-#         small_average_elapsed_time = average_retrieval_time(small_table, key)
-#         large_average_elapsed_time = average_retrieval_time(large_table, key)
-#         self.assertAlmostEqual(small_average_elapsed_time, large_average_elapsed_time, delta=(small_average_elapsed_time+1e-6)*2)
+    def test_retrieval_is_constant_time(self):
+        """
+        Test 22: Retrieving a value from a dictionary should take the same amount of time
+        no matter how many k-v pairs it contains. It should be O(... what?)
+        """
+        time_samples = []
+        key = fake_key()
+        value = fake_value()
+        small_table = HashTable()
+        small_table[key] = value
+        large_table = HashTable(20000)
+        for _ in range(10000):
+            large_table[fake_key()] = fake_value()
+        large_table[key] = value
+        for _ in range(9999):
+            large_table[fake_key()] = fake_value()
+        small_average_elapsed_time = average_retrieval_time(small_table, key)
+        large_average_elapsed_time = average_retrieval_time(large_table, key)
+        self.assertAlmostEqual(small_average_elapsed_time, large_average_elapsed_time, delta=(small_average_elapsed_time+1e-6)*2)
 
-#     def test_constant_retrieval_order(self):
-#         """
-#         Test 23: Retrieving a value using the first-used key and the most recently-used
-#         key should be in constant time.
-#         """
-#         h = HashTable(20000)
-#         first_key = fake_key()
-#         last_key = fake_key()
-#         h[first_key] = fake_value()
-#         for _ in range(19998):
-#             h[fake_key()] = fake_value()
-#         h[last_key] = fake_value()
-#         first_key_value_average_retrieval_time = average_retrieval_time(h, first_key)
-#         last_key_value_average_retrieval_time = average_retrieval_time(h, last_key)
-#         self.assertAlmostEqual(first_key_value_average_retrieval_time,\
-#             last_key_value_average_retrieval_time,\
-#             delta=(first_key_value_average_retrieval_time+1e-6)*2)
+    def test_constant_retrieval_order(self):
+        """
+        Test 23: Retrieving a value using the first-used key and the most recently-used
+        key should be in constant time.
+        """
+        h = HashTable(20000)
+        first_key = fake_key()
+        last_key = fake_key()
+        h[first_key] = fake_value()
+        for _ in range(19998):
+            h[fake_key()] = fake_value()
+        h[last_key] = fake_value()
+        first_key_value_average_retrieval_time = average_retrieval_time(h, first_key)
+        last_key_value_average_retrieval_time = average_retrieval_time(h, last_key)
+        self.assertAlmostEqual(first_key_value_average_retrieval_time,\
+            last_key_value_average_retrieval_time,\
+            delta=(first_key_value_average_retrieval_time+1e-6)*2)
 
 def fake_key():
     return f"FAKE KEY {time.time()}"

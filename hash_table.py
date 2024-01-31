@@ -56,7 +56,26 @@ class HashTable:
     
     def __len__(self):
         return self.size
+    
+    def clear(self):
+        self.data = [None] * self.capacity
+        self.values = [[] for _ in range(self.capacity)]
+        self.size = 0
 
+    def keys(self):
+        all_keys = []
+        for bucket in self.values:
+            for key, _ in bucket:
+                all_keys.append(key)
+        return all_keys
+
+    def vals(self):
+        all_values = []
+        for bucket in self.values:
+            for _, value in bucket:
+                all_values.append(value)
+        return all_values 
+            
 
     
        
