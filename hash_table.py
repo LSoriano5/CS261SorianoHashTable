@@ -6,25 +6,30 @@
 # Collaborators : 
 # Time spent    : 
 
-
 class HashTable:
 
-    def __init__(self, size=100):
-        self.capacity = size
+    def __init__(self, size = 100):
+        self.capacity = size 
         self.data = [None] * size
         self.values = [[] for _ in range(size)]
+        self.size = 0
 
     def __getitem__(self, key):
-        index = self.hash_test(key)
-        if self.data[index] is None:
-            raise KeyError("KeyError: Key not found")
-        return self.data[index]
+        index = self.hash(key)
+        for k, v in self.values[index]:
+          if k == key:
+            return v
+        raise KeyError(key)
     
     def __setitem__(self, key, value):
-        index = self.hash_test(key)
-        self.data[index] = value
+        index = self.hash(key)
+
+        for i, (key_exists, _) in enumerate(self.values[index]):
+            if key_exists == key:
+                self.values[index][i] = [key, value]
+                return
         self.values[index].append([key, value])
-        
+        self.size += 1
 
     def set(self, key, value):
         self[key] = value
@@ -32,11 +37,29 @@ class HashTable:
     def get(self,key):
         return self[key]
     
-    def hash_test(self, key):
+    def hash(self,key):
         return (hash(key) * (hash(key) +3)) % self.capacity
     
-    def hash(self,key):
-        return self.hash_test(key)
+    def delete(self, key):
+        index = self.hash(key)
+
+        if not self.values[index]:
+            raise KeyError(key)
+
+        for i, (k, _) in enumerate(self.values[index]):
+          if k == key:
+             del self.values[index][i]
+             self.size -= 1
+             return
+
+        raise KeyError(key)
+    
+    def __len__(self):
+        return self.size
+
+
+    
+       
 
     
     

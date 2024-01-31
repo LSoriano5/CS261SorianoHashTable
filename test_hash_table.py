@@ -129,71 +129,71 @@ class TestHashTable(unittest.TestCase):
 #     # Insertion
 #     # """
 
-#     def test_insert_two(self):
-#         """
-#         Test 11: Inserting two k-v pairs stores them as two-element arrays in the list
-#         at the right index.
-#         """
-#         h = HashTable(5)
-#         h[9] = 'spam' # Using numbers as keys for visibility.
-#         h[11] = 'eggs'
-#         self.assertEqual([[9, 'spam']], h.values[3])
-#         self.assertEqual([[11, 'eggs']], h.values[4])
+    def test_insert_two(self):
+        """
+        Test 11: Inserting two k-v pairs stores them as two-element arrays in the list
+        at the right index.
+        """
+        h = HashTable(5)
+        h[9] = 'spam' # Using numbers as keys for visibility.
+        h[11] = 'eggs'
+        self.assertEqual([[9, 'spam']], h.values[3])
+        self.assertEqual([[11, 'eggs']], h.values[4])
 
-#     def test_insert_existing(self):
-#         """
-#         Test 12: Inserting a k-v pair where the key already exists overwrites the old value.
-#         """
-#         h = HashTable(5)
-#         h[9] = 'spam' # Using numbers as keys for visibility.
-#         h[9] = 'eggs'
-#         self.assertEqual([[9, 'eggs']], h.values[3])
+    def test_insert_existing(self):
+        """
+        Test 12: Inserting a k-v pair where the key already exists overwrites the old value.
+        """
+        h = HashTable(5)
+        h[9] = 'spam' # Using numbers as keys for visibility.
+        h[9] = 'eggs'
+        self.assertEqual([[9, 'eggs']], h.values[3])
 
-#     def test_insert_collision(self):
-#         """
-#         Test 13: Inserting a k-v pair where the key has the same hash as an existing key
-#         appends the new k-v pair to the list at the appropriate index.
-#         """
-#         h = HashTable(5)
-#         h[9] = 'spam'
-#         h[4] = 'eggs'
-#         self.assertEqual([[9, 'spam'], [4, 'eggs']], h.values[3])
+    def test_insert_collision(self):
+        """
+        Test 13: Inserting a k-v pair where the key has the same hash as an existing key
+        appends the new k-v pair to the list at the appropriate index.
+        """
+        h = HashTable(5)
+        h[9] = 'spam'
+        h[4] = 'eggs'
+        self.assertEqual([[9, 'spam'], [4, 'eggs']], h.values[3])
 
 #     # """
 #     # Deletion
 #     # """
 
-#     def test_delete(self):
-#         """
-#         Test 14: Deleting a key removes the k-v pair from the hash table.
-#         """
-#         h = HashTable(5)
-#         h['spam'] = 'eggs'
-#         h.delete('spam')
-#         try:
-#             _ = h['spam']
-#             self.fail("Did not raise KeyError: Missing key.")
-#         except KeyError:
-#             pass
+    def test_delete(self):
+        """
+        Test 14: Deleting a key removes the k-v pair from the hash table.
+        """
+        h = HashTable(5)
+        h['spam'] = 'eggs'
+        h.delete('spam')
+        try:
+            _ = h['spam']
+            self.fail("Did not raise KeyError: Missing key.")
+        except KeyError:
+            pass
     
 #     # """
 #     # Hash table length
 #     # """
-#     def test_hash_table_length_empty(self):
-#         """
-#         Test 15: An empty hash table returns a length of 0
-#         """
-#         h = HashTable(5)
-#         self.assertEqual(0, len(h))
+    def test_hash_table_length_empty(self):
+        """
+        Test 15: An empty hash table returns a length of 0
+        """
+        h = HashTable(5)
+        self.assertEqual(0, len(h))
 
-#     def test_hash_table_length(self):
-#         """
-#         Test 16: An non-empty hash table returns the number of key-value pairs in the hash table
-#         """
-#         h = HashTable(50)
-#         for key in range(75):
-#             h[key] = fake_value()
-#         self.assertEqual(75, len(h))
+    def test_hash_table_length(self):
+        """
+        Test 16: An non-empty hash table returns the number of key-value pairs in the hash table
+        """
+        h = HashTable(50)
+        for key in range(75):
+            h[key] = fake_value()
+        self.assertEqual(75, len(h))
     
 #     # """
 #     # Misc. Methods
